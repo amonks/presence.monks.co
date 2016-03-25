@@ -40,7 +40,6 @@
   (fn [f c !]
     (loop []
       (let [attempt (f c)]
-        (println "!" ! "attempt" attempt "=" (= ! attempt))
         (if (not= ! attempt)
           attempt
           (recur))))))

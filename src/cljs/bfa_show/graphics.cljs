@@ -107,7 +107,6 @@
 
 (defn init []
   (let [dimensions @(subscribe [:dimensions])]
-    (println "making sketch" dimensions)
     (q/defsketch header
       :host "graphics"
       :size [(v2/x dimensions) (v2/y dimensions)]
