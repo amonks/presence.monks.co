@@ -32,11 +32,11 @@
 
 
 (def ipad-nodes
-  [{:position [(/ 1 4) (/ 2 3)]
+  [{:position [(/ 1 4) (/ 3 4)]
     :size 70}
-   {:position [(/ 2 4) (/ 1 3)]
+   {:position [(/ 2 4) (/ 1 4)]
     :size 70}
-   {:position [(/ 3 4) (/ 2 3)]
+   {:position [(/ 3 4) (/ 3 4)]
     :size 70}])
 
 (defn initial-state []
