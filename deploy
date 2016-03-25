@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+boot production -- build;
+cd target;
+git init;
+git remote add origin amonks/presence.monks.co;
+git checkout -b gh-pages;
+git add .;
+git commit -am build;
+git push -f origin gh-pages;
+
