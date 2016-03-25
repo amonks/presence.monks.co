@@ -111,5 +111,6 @@
       :host "graphics"
       :size [(v2/x dimensions) (v2/y dimensions)]
       :setup setup
+      :bgcolor "#ffffff"
       :draw draw)))
 
