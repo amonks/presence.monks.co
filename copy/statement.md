@@ -1,12 +1,7 @@
 <div class="col-md-6">
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe src="https://player.vimeo.com/video/160085792?color=ffffff&title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
-
-# PRESENCE 
-#### and the arrow of time
-
-This work seeks to provide a site for examining these concepts.
+  <div class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://player.vimeo.com/video/160085792?color=ffffff&title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+  </div>
 </div>
 
 <div class="col-md-6">

@@ -36,6 +36,17 @@
 (defn constrained+ [amount]
   #(constrain (partial + amount) %))
 
+(def get-another
+  (fn [f c !]
+    (loop []
+      (let [attempt (f c)]
+        (println "!" ! "attempt" attempt "=" (= ! attempt))
+        (if (not= ! attempt)
+          attempt
+          (recur))))))
+
+(def get-another-randomly (partial get-another rand-nth))
+
 ;; ---------------------
 ;; Event Handlers
 
@@ -80,8 +91,17 @@
                           new-node {:position [(v2/x scaled-position)
                                                (v2/y scaled-position)]
                                     :size 10}]
-                      (println "new node" new-node)
+                      (dispatch [:add-dart-from-node new-node])
                       (conj nodes new-node))))
+
+(register-handler :add-dart-from-node
+                  [check-schema-mw (path :header-graphics) trim-v]
+                  (fn [state [node]]
+                    (let [darts (:darts state)
+                          nodes (:nodes state)]
+                      (assoc-in state [:darts] (conj darts {:from node
+                                                            :to (get-another-randomly nodes node)
+                                                            :progress 0})))))
 
 (register-handler :add-dart
                   [check-schema-mw (path :header-graphics) trim-v]

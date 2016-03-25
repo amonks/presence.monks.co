@@ -9,9 +9,7 @@
 ;; Helpers
 
 (.addEventListener js/window "resize" #(dispatch [:resize-window]))
-(.addEventListener js/window "click" #(do (dispatch [:add-node-at-position [(.-clientX %) (.-clientY %)]])
-                                          (dispatch [:add-dart])
-                                          (dispatch [:add-dart])))
+(.addEventListener js/window "click" #(do (dispatch [:add-node-at-position [(.-clientX %) (.-clientY %)]])))
 
 ;; --------------------
 ;; Schema
@@ -32,19 +30,27 @@
 ;; --------------------
 ;; Data
 
-(defn initial-nodes []
-  [{:position [0 0]
-    :size 50}
-   {:position [0 1]
-    :size 50}
-   {:position [1 0]
-    :size 50}
-   {:position [1 1]
-    :size 50}])
+
+(def ipad-nodes
+  [{:position [(/ 1 4) (/ 2 3)]
+    :size 70}
+   {:position [(/ 2 4) (/ 1 3)]
+    :size 70}
+   {:position [(/ 3 4) (/ 2 3)]
+    :size 70}])
 
 (defn initial-state []
-  {:nodes (initial-nodes)
-   :darts []})
+  (let [node #(get ipad-nodes %)]
+    {:nodes ipad-nodes
+     :darts [{:from (node 0)
+              :to (node 1)
+              :progress 0}
+             {:from (node 1)
+              :to (node 2)
+              :progress 0}
+             {:from (node 2)
+              :to (node 0)
+              :progress 0}]}))
 
 ;; --------------------
 
@@ -66,9 +72,9 @@
   ([x y width height]
    (let [position (correct-position x y width height)]
      (q/fill 0)
-     (q/ellipse (v2/x position)
-                (v2/y position)
-                width height)))
+     (q/rect (v2/x position)
+             (v2/y position)
+             width height)))
   ([dart]
    (let [to (get-in dart [:to :position])
          from (get-in dart [:from :position])
@@ -95,7 +101,7 @@
       (dispatch [:frame]))
     (let [nodes (subscribe [:nodes])
           darts (subscribe [:darts])]
-      (q/background 255)
+      (apply q/rect (into [0 0] (window/size)))
       (doall (map draw-dart @darts))
       (doall (map draw-node @nodes)))))
 

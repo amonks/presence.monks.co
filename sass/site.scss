@@ -7,3 +7,11 @@
   z-index: -5;
 }
 
+html {
+  margin-top: 50px;
+}
+
+.embed-responsive iframe {
+  opacity: 0.8;
+  border: 5px solid black;
+}
