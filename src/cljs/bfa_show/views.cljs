@@ -8,7 +8,6 @@
   (println "message" (.-data message)))
 
 (defn add-listeners []
-  (println "adding event listeners")
   (.addEventListener js/window "message" #(handle-message %) false))
 
 (.addEventListener js/window "message" #(add-listeners))
