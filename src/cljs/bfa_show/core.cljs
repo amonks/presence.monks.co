@@ -19,8 +19,8 @@
 (secretary/defroute "/" [query-params]
   (dispatch [:set-page :home]))
 
-(secretary/defroute "/:slug" [slug query-params]
-  (dispatch [:set-page (keyword slug)]))
+(secretary/defroute "/colophon" [slug query-params]
+  (dispatch [:set-page :colophon]))
 
 ;; -------------------------
 ;; Initialize app
@@ -38,3 +38,4 @@
   (g/init))
 
 (init)
+

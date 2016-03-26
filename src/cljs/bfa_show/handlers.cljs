@@ -56,18 +56,17 @@
                     (println "initializing db")
                     (initial-state)))
 
-(register-handler :got-events
-                  [check-schema-mw (path :events) trim-v]
-                  (fn [_ new-events]
-                    new-events))
+(register-handler :set-page
+                  [check-schema-mw (path :current-page) trim-v]
+                  (fn [_ [new-page]]
+                    new-page))
 
-(register-handler
- :resize-window
- (fn [db [_ size]]
-   (let [size (or size (window/size))]
-     (set! (.-width (.getElementById js/document "graphics")) (v2/x size))
-     (set! (.-height (.getElementById js/document "graphics")) (v2/y size))
-     (assoc db :dimensions size))))
+(register-handler :resize-window
+                  (fn [db [_ size]]
+                    (let [size (or size (window/size))]
+                      (set! (.-width (.getElementById js/document "graphics")) (v2/x size))
+                      (set! (.-height (.getElementById js/document "graphics")) (v2/y size))
+                      (assoc db :dimensions size))))
 
 (register-handler :frame
                   [check-schema-mw (path :header-graphics :darts) trim-v]

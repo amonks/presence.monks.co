@@ -2,10 +2,5 @@
 
 the documentation website for `PRESENCE and the arrow of time`
 
-## colophon
-
-1. clojurescript
-2. reagent (re-frame)
-3. quil
-4. bootstrap (lol)
+more info on [the website itself](//presence.monks.co)
 

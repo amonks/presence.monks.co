@@ -12,6 +12,7 @@
 
 (def schema {:dimensions v2/schema
              :video-playing? s/Bool
+             :current-page s/Keyword
              :header-graphics g/schema})
 
 ;; ---------------------
@@ -20,5 +21,6 @@
 (defn initial-state []
    {:header-graphics (g/initial-state)
     :video-playing? false
+    :current-page :home
     :dimensions (window/size)})
 

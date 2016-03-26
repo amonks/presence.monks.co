@@ -1,3 +1,13 @@
+@import "normalize";
+@include normalize();
+
+@import "aspect-ratio";
+
+html, body, #app {
+  height: 100%;
+  cursor: pointer;
+}
+
 #graphics {
   position: fixed;
   top: 0;
@@ -7,12 +17,43 @@
   z-index: -5;
 }
 
-html {
-  padding-top: 50px;
-  cursor: pointer;
+#app {
+  display: flex;
+  min-height: 100%;
 }
 
-.embed-responsive iframe {
+.container {
+  max-width: 960px;
+  margin: auto;
+}
+
+main {
+  align-items: center;
+}
+
+.container, main {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.container > *, main > * {
+  flex: 1 100%;
+}
+
+.col {
+  flex: 1 100%;
+  padding: 15px;
+}
+
+@media all and (min-width: 600px) {
+  .col { flex: 1 0; }
+}
+
+.vimeo {
+  @include aspect-ratio(16, 9);
+}
+
+.vimeo iframe {
   opacity: 0.8;
   border: 5px solid black;
 }

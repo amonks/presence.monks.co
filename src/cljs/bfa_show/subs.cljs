@@ -8,6 +8,10 @@
 ;; --------------
 ;; Subscription Handlers and Registration
 
+(register-sub :current-page
+              (fn [db _]
+                (reaction (:current-page @db))))
+
 (register-sub :nodes
               (fn [db _]
                 (reaction (get-in @db [:header-graphics :nodes]))))
