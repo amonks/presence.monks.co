@@ -17,9 +17,20 @@ html, body, #app, #app > div {
   z-index: -5;
 }
 
-#app {
+#app, header, footer, .container, main {
   display: flex;
-  min-height: 100%;
+}
+
+.container > *, main > *, header > *, footer > * {
+  flex: 1 100%;
+}
+
+main, header, footer {
+  align-items: center;
+}
+
+.container, main {
+  flex-flow: row wrap;
 }
 
 .container {
@@ -29,19 +40,6 @@ html, body, #app, #app > div {
 
 .corner {
   margin: 1em;
-}
-
-main {
-  align-items: center;
-}
-
-.container, main {
-  display: flex;
-  flex-flow: row wrap;
-}
-
-.container > *, main > * {
-  flex: 1 100%;
 }
 
 .col {

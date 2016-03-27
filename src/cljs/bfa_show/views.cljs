@@ -23,10 +23,10 @@
   [:a {:href "/nodes"} "nodes"])
 
 (defn footer []
-  [:footer [:p "2016 | " [:a {:href "http://monks.co"} "Andrew Monks"]]
-           [:p [colophon-link]
+  [:footer [:p [colophon-link]
                " | "
-               [nodes-link]]])
+               [nodes-link]]i
+           [:p "2016 | " [:a {:href "http://monks.co"} "Andrew Monks"]]])
 
 (defn header []
   [:header [:h1 [home-link]]])
