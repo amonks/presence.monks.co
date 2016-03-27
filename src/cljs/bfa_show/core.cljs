@@ -16,11 +16,14 @@
 ;; -------------------------
 ;; Routes
 
-(secretary/defroute "/" [query-params]
+(secretary/defroute "/" []
   (dispatch [:set-page :home]))
 
-(secretary/defroute "/colophon" [slug query-params]
+(secretary/defroute "/colophon" []
   (dispatch [:set-page :colophon]))
+
+(secretary/defroute "/nodes" []
+  (dispatch [:set-page :nodes]))
 
 ;; -------------------------
 ;; Initialize app
