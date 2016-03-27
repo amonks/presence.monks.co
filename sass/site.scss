@@ -49,6 +49,10 @@ main {
   .col { flex: 1 0; }
 }
 
+header, footer {
+  text-align: center;
+}
+
 .vimeo {
   @include aspect-ratio(16, 9);
 }

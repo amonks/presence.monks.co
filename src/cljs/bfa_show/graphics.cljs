@@ -64,7 +64,8 @@
 
 (defn draw-dart-line
   [dart]
-  (let [to (window/scale (get-in dart [:to :position]))
+  (let [dimensoions (subscribe [:dimensions])
+        to (window/scale (get-in dart [:to :position]))
         from (window/scale (get-in dart [:from :position]))]
     (q/line (v2/x to) (v2/y to) (v2/x from) (v2/y from))))
 
@@ -96,12 +97,13 @@
      (draw-node (v2/x position) (v2/y position) (:size node) (:size node)))))
 
 (defn draw []
-  (let [video-playing? @(subscribe [:video-playing?])]
+  (let [video-playing? @(subscribe [:video-playing?])
+        dimensions @(subscribe [:dimensions])]
     (if-not video-playing?
       (dispatch [:frame]))
     (let [nodes (subscribe [:nodes])
           darts (subscribe [:darts])]
-      (apply q/rect (into [0 0] (window/size)))
+      (apply q/rect (into [0 0] dimensions))
       (doall (map draw-dart @darts))
       (doall (map draw-node @nodes)))))
 

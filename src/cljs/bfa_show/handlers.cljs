@@ -1,6 +1,6 @@
 (ns bfa-show.handlers
   (:require [bfa-show.state :refer [initial-state schema]]
-            [re-frame.core :refer [register-handler path after trim-v dispatch]]
+            [re-frame.core :refer [register-handler path after trim-v dispatch subscribe]]
             [bfa-show.window :as window]
             [bfa-show.v2 :as v2]
             [schema.core :as s]))
@@ -84,7 +84,7 @@
 (register-handler :add-node-at-position
                   [check-schema-mw (path :header-graphics :nodes) trim-v]
                   (fn [nodes [position]]
-                    (let [window-size (window/size)
+                    (let [window-size @(subscribe [:dimensions])
                           scaled-position (v2/div position window-size)
                           new-node {:position [(v2/x scaled-position)
                                                (v2/y scaled-position)]
