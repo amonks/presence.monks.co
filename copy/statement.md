@@ -6,5 +6,5 @@ However, we can observe that the total entropy in the universe increases over ti
 
 ### The Speed Of Light
 
-If objects could travel faster than the speed of light, it would create multiple conflicting timelines. If I throw a ball *faster than the speed of light*, then depending on where you're standing you might see the ball travel from the earth to the sun *or* from the sun to the earth. The trouble is, neither of these views would be any more correct than the other.
+If objects could travel faster than the speed of light, it would create multiple conflicting timelines. If I throw a ball at the sun *faster than the speed of light*, then depending on where you're standing you might see the ball travel from the earth to the sun *or* from the sun to the earth. The trouble is, neither of these views would be any more correct than the other.
 
